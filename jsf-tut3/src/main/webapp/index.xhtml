@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Scope Demo</title>
+</h:head> 
+<body> 
+	
+	<h1>Scope Demo</h1>
+	
+	<h:panelGrid columns="2">
+		
+		<h:outputLabel value="Dependent" />
+		<h:outputText value="#{dependentCounter.count}" />
+		
+		<h:outputLabel value="Request" />
+		<h:outputText value="#{requestCounter.count}" />
+		
+		<h:outputLabel value="Session" />
+		<h:outputText value="#{sessionCounter.count}" />
+		
+		<h:outputLabel value="Application" />
+		<h:outputText value="#{applicationCounter.count}" />
+		
+		<span></span>
+		<h:button outcome="index" value="Count Up"></h:button>
+	
+	</h:panelGrid>
+</body> 
+</html>

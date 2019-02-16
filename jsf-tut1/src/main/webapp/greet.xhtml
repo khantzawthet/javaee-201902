@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Greet Demo</title>
+</h:head> 
+<body> 
+
+	<h1>Greet Demo</h1>
+
+	<h:form>
+		
+		<h:panelGrid columns="2">
+			
+			<h:outputLabel value="Name" />
+			<h:inputText value="#{greetBean.user.name}" />
+			
+			<h:outputLabel value="Phone" />
+			<h:inputText value="#{greetBean.user.phone}" />
+			
+			<h:outputLabel value="Email" />
+			<h:inputText value="#{greetBean.user.email}" />
+
+			<h:outputLabel value="Address" />
+			<h:inputTextarea value="#{greetBean.user.address}" rows="4" cols="40" />
+			
+			<h:panelGroup></h:panelGroup>
+			<h:panelGroup>
+				<button type="reset">Clear</button>
+				<h:commandButton action="#{greetBean.greet()}" value="Greet" />
+			</h:panelGroup>
+		</h:panelGrid>
+		
+	</h:form>
+	
+	<h:outputText value="#{greetBean.message}" />
+
+</body> 
+</html>
