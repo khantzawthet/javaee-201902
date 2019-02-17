@@ -34,7 +34,7 @@
 			</h:selectOneMenu>
 			
 			<h:outputLabel value="Interests" />
-			<h:selectManyCheckbox value="#{sr.student.interests}">
+			<h:selectManyCheckbox value="#{sr.student.interests}" layout="pageDirection" >
 				<f:selectItems value="#{sr.interests}" var="i" itemLabel="#{i}" itemValue="#{i}" />
 			</h:selectManyCheckbox>
 			
