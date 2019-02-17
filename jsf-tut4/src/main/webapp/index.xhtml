@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Navigation</title>
+</h:head> 
+<body> 
+
+	<h1>Navigation Demo</h1>
+	
+	<ul>
+		<li>
+			View To View
+			<ol>
+				<li>
+					<h:link value="Using Link" outcome="/otherpage"/>
+				</li>
+				<li>
+					<h:button value="Using Button" outcome="/otherpage" />
+				</li>
+				<li>
+					<h:form>
+						<h:commandLink action="/otherpage" value="Command Link" />
+					</h:form>
+				</li>
+				<li>
+					<h:form>
+						<h:commandButton action="/otherpage" value="Command Button" />
+					</h:form>
+				</li>
+			</ol>
+		</li>
+		<li>
+			Backing Beans
+			<ol>
+				<li>
+					<h:form>
+						<h:commandLink action="#{navigateByAction.goToOtherPage()}" value="By Action Method" />
+					</h:form>
+				</li>
+				<li>
+					<h:link outcome="/no-error" value="No Error Test" >
+						<f:param name="message" value="Hello JSF"></f:param>
+					</h:link>
+				</li>
+				<li>
+					<h:link outcome="/no-error" value="Error Test" >
+					</h:link>
+				</li>
+			</ol>
+		</li>
+	</ul>
+</body> 
+</html>

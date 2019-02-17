@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Add New</title>
+</h:head> 
+<body> 
+	
+	<h1>Add New Blog</h1>
+	
+	<h:form>
+		<h:panelGrid columns="2" >
+		
+			<h:outputLabel value="Title" />
+			<h:inputText value="#{blogAddBean.blog.title}" />
+			
+			<h:outputLabel value="User Name" />
+			<h:inputText value="#{blogAddBean.blog.user}" />
+
+			<h:outputLabel value="Post Details" />
+			<h:inputTextarea value="#{blogAddBean.blog.body}" rows="5" cols="60" />
+			
+			<span></span>
+			<h:commandButton action="#{blogAddBean.save()}" value="Save" />
+			
+		</h:panelGrid>
+	</h:form>
+</body> 
+</html>

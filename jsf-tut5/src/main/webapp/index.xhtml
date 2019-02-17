@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Blog List</title>
+</h:head> 
+<body> 
+	
+	<h1>Blog List</h1>
+	
+	<h:form>
+		
+		<h:outputLabel value="Title" />
+		<h:inputText value="#{blogListBean.title}" />
+		
+		<h:outputLabel value="User Name" />
+		<h:inputText value="#{blogListBean.name}" />
+		
+		<h:commandButton action="#{blogListBean.search()}" value="Search" />
+		<h:button outcome="/add-new" value="Add New"></h:button>
+		
+	</h:form>
+	
+	<h:dataTable value="#{blogListBean.blogs}" var="b">
+		
+		<h:column>
+			<f:facet name="header">ID</f:facet>
+			#{b.id}
+		</h:column>
+	
+		<h:column>
+			<f:facet name="header">Title</f:facet>
+			#{b.title}
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">User</f:facet>
+			#{b.user}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Post Time</f:facet>
+			#{b.postTime}
+		</h:column>
+		
+	</h:dataTable>
+</body> 
+</html>
