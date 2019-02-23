@@ -2,11 +2,16 @@ package com.jdc.blog.entity;
 
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.NotEmpty;
+
 public class Blog {
 
 	private int id;
+	@NotEmpty(message = "Please enter Blog Title.")
 	private String title;
+	@NotEmpty(message = "Please enter Blog Body.")
 	private String body;
+	@NotEmpty(message= "Please enter Author name.")
 	private String user;
 	private LocalDateTime postTime;
 

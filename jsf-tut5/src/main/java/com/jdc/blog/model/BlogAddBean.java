@@ -2,6 +2,8 @@ package com.jdc.blog.model;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -20,6 +22,13 @@ public class BlogAddBean {
 	@PostConstruct
 	private void init() {
 		blog = new Blog();
+		
+		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+		String str = context.getRequestParameterMap().get("id");
+		
+		if(null != str) {
+			blog = repo.findById(Integer.parseInt(str));
+		}
 	}
 
 	public String save() {
