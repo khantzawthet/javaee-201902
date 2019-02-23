@@ -22,7 +22,6 @@ public class BlogRepository {
 	}
 	
 	public void add(Blog blog) {
-		blogs.add(blog);
 		blog.setPostTime(LocalDateTime.now());
 		
 		if(blogs.isEmpty()) {
@@ -30,6 +29,8 @@ public class BlogRepository {
 		} else {
 			blog.setId(blogs.get(blogs.size() - 1).getId() + 1);
 		}
+
+		blogs.add(blog);
 	}
 	
 	public Blog findById(int id) {
@@ -44,17 +45,35 @@ public class BlogRepository {
 	}
 	
 	public List<Blog> search(String title, String user) {
+		List<Blog> list = new ArrayList<>();
 		
-		Predicate<Blog> filter = a -> true;
-		
-		if(null != title && !title.isEmpty()) {
-			filter = filter.and(blog -> blog.getTitle().toLowerCase().contains(title.toLowerCase()));
+		for(Blog b : blogs) {
+			
+			if(isNotEmpty(title) && isNotEmpty(user)) {
+				if(startWithNoCase(b.getTitle(), title) && startWithNoCase(b.getUser(), user)) {
+					list.add(b);
+				}
+			} else if (isNotEmpty(title)) {
+				if(startWithNoCase(b.getTitle(), title)) {
+					list.add(b);
+				}
+			} else if (isNotEmpty(user)) {
+				if(startWithNoCase(b.getUser(), user)) {
+					list.add(b);
+				}
+			} else {
+				list.add(b);
+			}
 		}
 		
-		if(null != user && !user.isEmpty()) {
-			filter = filter.and(blog -> blog.getUser().toLowerCase().contains(user.toLowerCase()));
-		}
-		
-		return blogs.stream().filter(filter).collect(Collectors.toList());
+		return list;
+	}
+	
+	private boolean startWithNoCase(String origin, String content) {
+		return origin.toLowerCase().startsWith(content.toLowerCase());
+	}
+
+	private boolean isNotEmpty(String str) {
+		return null != str && !str.isEmpty();
 	}
 }

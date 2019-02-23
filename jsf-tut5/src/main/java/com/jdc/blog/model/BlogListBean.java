@@ -2,6 +2,7 @@ package com.jdc.blog.model;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -17,6 +18,11 @@ public class BlogListBean {
 	private String name;
 
 	private List<Blog> blogs;
+	
+	@PostConstruct
+	public void init() {
+		blogs = repo.search(title, name);
+	}
 	
 	@Inject
 	private BlogRepository repo;
