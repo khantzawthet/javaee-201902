@@ -1,10 +1,13 @@
 package com.jdc.blog.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotEmpty;
 
-public class Blog {
+public class Blog implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private int id;
 	@NotEmpty(message = "Please enter Blog Title.")

@@ -69,14 +69,19 @@
 			</h:column>
 			
 			<h:column>
-				<h:link outcome="/details" styleClass="btn btn-link">
-					<i class="fa fa-send"></i>
-					<f:param name="id" value="#{b.id}"></f:param>
-				</h:link>
-				<h:link outcome="/add-new" styleClass="btn btn-link">
-					<i class="fa fa-pencil"></i>
-					<f:param name="id" value="#{b.id}"></f:param>
-				</h:link>
+				<h:form>
+					<h:link outcome="/details" styleClass="btn btn-link">
+						<i class="fa fa-send"></i>
+						<f:param name="id" value="#{b.id}"></f:param>
+					</h:link>
+					<h:link outcome="/add-new" styleClass="btn btn-link">
+						<i class="fa fa-pencil"></i>
+						<f:param name="id" value="#{b.id}"></f:param>
+					</h:link>
+					<h:commandLink action="#{blogListBean.delete(b.id)}" styleClass="btn btn-link" >
+						<i class="fa fa-trash-o"></i>
+					</h:commandLink>
+				</h:form>
 			</h:column>
 			
 		</h:dataTable>

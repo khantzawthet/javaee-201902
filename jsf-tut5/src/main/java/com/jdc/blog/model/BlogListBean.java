@@ -31,6 +31,11 @@ public class BlogListBean {
 		blogs = repo.search(title, name);
 		return "/index";
 	}
+	
+	public String delete(int id) {
+		repo.delete(id);
+		return "/index?faces-redirect=true";
+	}
 
 	public String getTitle() {
 		return title;

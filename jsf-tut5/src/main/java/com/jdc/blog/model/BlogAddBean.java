@@ -1,9 +1,11 @@
 package com.jdc.blog.model;
 
+import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -11,8 +13,10 @@ import com.jdc.blog.entity.Blog;
 import com.jdc.blog.repo.BlogRepository;
 
 @Named
-@RequestScoped
-public class BlogAddBean {
+@ViewScoped
+public class BlogAddBean implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	private Blog blog;
 
@@ -32,7 +36,12 @@ public class BlogAddBean {
 	}
 
 	public String save() {
-		repo.add(blog);
+		
+		if(blog.getId() > 0) {
+			repo.update(blog);
+		} else {
+			repo.add(blog);
+		}
 		return "/index?faces-redirect=true";
 	}
 

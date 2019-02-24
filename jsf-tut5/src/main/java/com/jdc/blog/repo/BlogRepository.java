@@ -1,5 +1,6 @@
 package com.jdc.blog.repo;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,9 @@ import javax.enterprise.context.ApplicationScoped;
 import com.jdc.blog.entity.Blog;
 
 @ApplicationScoped
-public class BlogRepository {
+public class BlogRepository implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	private List<Blog> blogs;
 	
@@ -29,6 +32,10 @@ public class BlogRepository {
 		}
 
 		blogs.add(blog);
+	}
+	
+	public void update(Blog blog) {
+		
 	}
 	
 	public Blog findById(int id) {
