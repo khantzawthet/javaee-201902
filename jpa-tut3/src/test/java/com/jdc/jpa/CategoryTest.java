@@ -54,6 +54,7 @@ class CategoryTest {
 		Category c2 = em.find(Category.class, 2);
 		c2.setName("Drinks");
 		
+		// removed state
 		em.remove(c);
 		
 		em.getTransaction().commit();
