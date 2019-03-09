@@ -1,41 +1,26 @@
 package com.jdc.jpa;
 
-import static javax.persistence.CascadeType.PERSIST;
-
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Category implements Serializable {
-
+public class Item implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@ManyToOne
+	private Category category;
 	private String name;
-
-	@OneToMany(mappedBy = "category", cascade = PERSIST, orphanRemoval = true)
-	private List<Item> items;
-	
-	public Category() {
-		items = new ArrayList<>();
-	}
-
-	public List<Item> getItems() {
-		return items;
-	}
-
-	public void setItems(List<Item> items) {
-		this.items = items;
-	}
+	private int price;
 
 	public int getId() {
 		return id;
@@ -43,6 +28,14 @@ public class Category implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public String getName() {
@@ -53,9 +46,12 @@ public class Category implements Serializable {
 		this.name = name;
 	}
 
-	public void add(Item item) {
-		item.setCategory(this);
-		items.add(item);
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 }
