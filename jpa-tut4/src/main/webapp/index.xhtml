@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Course List</title>
+	
+	<link href="resources/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="font-awesome.min.css" />
+	
+</h:head> 
+<body> 
+
+	<div class="container">
+	
+		<h1>Course List</h1>
+		
+		<h:link styleClass="btn btn-outline-danger" outcome="/course-add" value="Add Course"/>
+		
+		<h:dataTable styleClass="table table-info mt-4" value="#{courseListBean.list}" var="c">
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				#{c.id}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Name</f:facet>
+				#{c.name}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Level</f:facet>
+				#{c.level}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Duration</f:facet>
+				#{c.hours}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Fees</f:facet>
+				#{c.fees}
+			</h:column>
+		</h:dataTable>
+	</div>
+</body> 
+</html>

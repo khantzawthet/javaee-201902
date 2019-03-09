@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Add Course</title>
+	
+	<link href="resources/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="font-awesome.min.css" />
+	
+</h:head> 
+<body> 
+	
+	<div class="container">
+		<h1>Add Course</h1>
+		
+		<h:form>
+		
+			<div class="form-group">
+				<h:outputLabel value="Name" />
+				<h:inputText value="#{courseEditBean.course.name}" styleClass="form-control" />
+			</div>
+			
+			<div class="form-group">
+				<h:outputLabel value="Level" />
+				<h:selectOneMenu value="#{courseEditBean.course.level}" styleClass="form-control">
+					<f:selectItems value="#{courseEditBean.levels}" var="l" itemLabel="#{l}" itemValue="#{l}"></f:selectItems>
+				</h:selectOneMenu>
+			</div>	
+			
+			<div class="form-group">
+				<h:outputLabel value="Duration" />
+				<h:inputText value="#{courseEditBean.course.hours}" styleClass="form-control" />
+			</div>
+			
+			<div class="form-group">
+				<h:outputLabel value="Fees" />
+				<h:inputText value="#{courseEditBean.course.fees}" styleClass="form-control" />
+			</div>
+			
+			<div class="form-group">
+				<h:outputLabel value="Description" />
+				<h:inputTextarea value="#{courseEditBean.course.description}" styleClass="form-control" />
+			</div>
+			
+			<h:commandLink action="#{courseEditBean.save()}" styleClass="btn btn-outline-danger">
+				<i class="fa fa-save"></i> Save
+			</h:commandLink>
+		</h:form>
+	</div>
+	
+</body> 
+</html>
