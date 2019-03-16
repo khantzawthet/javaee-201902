@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+	
+		<ui:define name="title">Item Management</ui:define>
+		
+		<ui:define name="content">
+			<h:form styleClass="form-inline">
+				<div class="form-group mr-4">
+					<label class="mr-2">Category</label>
+					<h:selectOneMenu converter="#{categoryConverter}" styleClass="form-control" value="#{itemListBean.category}">
+						<f:selectItems value="#{itemListBean.categories}" var="c" itemValue="#{c}" itemLabel="#{c.name}"></f:selectItems>
+					</h:selectOneMenu>
+				</div>
+				
+				<div class="form-group mr-4">
+					<label class="mr-2">Name</label>
+					<h:inputText styleClass="form-control" value="#{itemListBean.name}" />
+				</div>
+				
+				<h:commandLink styleClass="btn btn-outline-primary mr-2" action="#{itemListBean.search()}">
+					<i class="fa fa-search"></i> Search
+				</h:commandLink>
+				
+				<h:link outcome="/item-edit" styleClass="btn btn-outline-danger">
+					<i class="fa fa-plus"></i> Add New
+				</h:link>
+			</h:form>
+			
+			<h:dataTable styleClass="mt-4 table table-dark" value="#{itemListBean.items}" var="i">
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					#{i.id}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Category</f:facet>
+					#{i.category.name}
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					#{i.name}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Price</f:facet>
+					#{i.price}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Tags</f:facet>
+					#{i.tags}
+				</h:column>
+				
+			</h:dataTable>
+		</ui:define>
+	</ui:composition>
+</html>

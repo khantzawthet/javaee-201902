@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+	
+		<ui:define name="title">Category Management</ui:define>
+		
+		<ui:define name="content">
+			<div class="d-flex justify-content-end">
+				<button data-toggle="modal" data-target="#popup" class="btn btn-outline-danger"><i class="fa fa-plus"></i> Add New</button>
+			</div>
+			
+			<div class="d-flex">
+				<ui:repeat var="c" value="#{categoryManagementBean.list}">
+					<div class="card mr-2">
+						<div class="card-body">
+							<h3 class="card-title"><i class="fa #{c.icon}"></i> #{c.name}</h3>
+						</div>
+					</div>
+				</ui:repeat>
+			</div>
+			
+			<div id="popup" class="modal fade">
+				<div class="modal-dialog">
+					<h:form styleClass="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Add New Category</h5>
+						</div>
+						
+						<div class="modal-body">
+						
+							<div class="form-group">
+								<label for="name">Category</label>
+								<h:inputText value="#{categoryManagementBean.category.name}" styleClass="form-control" />
+							</div>
+						
+							<div class="form-group">
+								<label for="icon">Icon</label>
+								<h:inputText value="#{categoryManagementBean.category.icon}" styleClass="form-control" />
+							</div>
+						</div>
+						
+						<div class="modal-footer">
+							<h:commandLink styleClass="btn btn-outline-danger" action="#{categoryManagementBean.addNew()}" >
+								<i class="fa fa-save"></i> Save
+							</h:commandLink>
+						</div>
+					</h:form>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</html>
