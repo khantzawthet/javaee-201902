@@ -65,5 +65,9 @@ public class OrderDetails implements Serializable{
 	public void countUp() {
 		quentity ++;
 	}
+	
+	public void countDown() {
+		quentity --;
+	}
 
 }

@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.OneToMany;
@@ -17,6 +18,7 @@ import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.CascadeType.MERGE;
 
 @Entity
+@NamedQuery(name = "Invoice.getAll", query = "select i from Invoice i")
 public class Invoice implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -34,6 +36,18 @@ public class Invoice implements Serializable{
 	private BillingInformation billingInfo;
 	@OneToMany(mappedBy = "invoice", cascade = { PERSIST, MERGE })
 	private List<OrderDetails> orders;
+	
+	public int getSubTotal() {
+		return orders.stream().mapToInt(a -> a.getQuentity() * a.getUnitPrice()).sum();
+	}
+	
+	public double getTax() {
+		return getSubTotal() * 0.05;
+	}
+	
+	public double getTotal() {
+		return getSubTotal() * getTax();
+	}
 	
 	public Invoice() {
 		orders = new ArrayList<>();

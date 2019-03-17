@@ -24,6 +24,15 @@ public class ShoppingCart implements Serializable {
 		orders = new ArrayList<>();
 	}
 
+	public String clearItems() {
+		clear();
+		return "/index";
+	}
+
+	public void clear() {
+		this.orders.clear();
+	}
+
 	public void add(Product p) {
 		OrderDetails od = orders.stream()
 				.filter(o -> o.getProduct().getId() == p.getId())
@@ -33,9 +42,17 @@ public class ShoppingCart implements Serializable {
 			od = new OrderDetails();
 			od.setProduct(p);
 			od.setQuentity(1);
+			od.setUnitPrice(p.getPrice());
 			orders.add(od);
 		} else {
 			od.countUp();
+		}
+	}
+	
+	public void countDown(OrderDetails od) {
+		od.countDown();
+		if(od.getQuentity() == 0) {
+			orders.remove(od);
 		}
 	}
 	
@@ -51,9 +68,17 @@ public class ShoppingCart implements Serializable {
 	public void setOrders(List<OrderDetails> orders) {
 		this.orders = orders;
 	}
-
-	public void clear() {
-		this.orders.clear();
+	
+	public int getSubTotal() {
+		return orders.stream().mapToInt(a -> a.getQuentity() * a.getUnitPrice()).sum();
+	}
+	
+	public double getTax() {
+		return getSubTotal() * 0.05;
+	}
+	
+	public double getTotal() {
+		return getSubTotal() * getTax();
 	}
 
 }

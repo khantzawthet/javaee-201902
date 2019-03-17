@@ -30,10 +30,6 @@
 					<i class="fa fa-shopping-cart mr-2"></i> <h:outputText id="cartCount" value="#{shoppingCart.count}" styleClass="badge badge-light text-dark" />
 				</h:link>
 				
-				<h:link outcome="/check-out" styleClass="nav-link">
-					<i class="fa fa-send"></i> Check Out
-				</h:link>
-				
 				<h:link outcome="/invoices" styleClass="nav-link">
 					<i class="fa fa-list-alt"></i> Invoices
 				</h:link>
@@ -43,7 +39,7 @@
 	
 	<div class="container">
 		
-		<h1><ui:insert name="page-title"></ui:insert></h1>
+		<h1 class="mt-2"><ui:insert name="page-title"></ui:insert></h1>
 		
 		<div class="mt-4">
 			<ui:insert name="content"></ui:insert>

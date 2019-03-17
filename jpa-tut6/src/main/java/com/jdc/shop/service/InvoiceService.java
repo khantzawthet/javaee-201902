@@ -1,5 +1,7 @@
 package com.jdc.shop.service;
 
+import java.util.List;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -17,4 +19,9 @@ public class InvoiceService {
 	public void save(Invoice invoice) {
 		em.merge(invoice);
 	}
+
+	public List<Invoice> getAll() {
+		return em.createNamedQuery("Invoice.getAll", Invoice.class).getResultList();
+	}
+	
 }

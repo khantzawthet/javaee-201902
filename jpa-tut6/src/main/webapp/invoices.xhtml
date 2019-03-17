@@ -10,6 +10,49 @@
 		
 		<ui:define name="page-title"><i class="fa fa-list-alt"></i> Invoices</ui:define>
 		
-		<ui:define name="content"></ui:define>
+		<ui:define name="content">
+			
+			<h:dataTable styleClass="table table-info" value="#{invoicesBean.list}" var="i">
+				<h:column>
+					<f:facet name="header">Id</f:facet>
+					#{i.id}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					#{i.customer.name}
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Phone</f:facet>
+					#{i.customer.phone}
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Email</f:facet>
+					#{i.customer.email}
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Invoice Date</f:facet>
+					<h:outputText value="#{i.invoiceTime}" converter="#{localDateTimeConverter}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Sub Total</f:facet>
+					#{i.subTotal}
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Tax</f:facet>
+					#{i.tax}
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Total</f:facet>
+					#{i.total}
+				</h:column>
+			</h:dataTable>
+		</ui:define>
 	</ui:composition>
 </html>

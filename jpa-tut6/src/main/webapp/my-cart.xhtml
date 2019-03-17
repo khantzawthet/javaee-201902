@@ -6,10 +6,55 @@
 
 	<ui:composition template="/WEB-INF/template.xhtml">
 	
-		<ui:define name="title">My Cart</ui:define>
+		<ui:define name="title">My Orders</ui:define>
 		
-		<ui:define name="page-title"><i class="fa fa-shopping-cart"></i> My Cart</ui:define>
+		<ui:define name="page-title"><i class="fa fa-shopping-cart"></i> My Orders</ui:define>
 		
-		<ui:define name="content"></ui:define>
+		<ui:define name="content">
+	
+			<h:form>
+				<h:dataTable value="#{shoppingCart.orders}" var="od" styleClass="table table-info">
+					
+					<h:column>
+						<f:facet name="header">Product</f:facet>
+						#{od.product.name}
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">Unit Price</f:facet>
+						#{od.unitPrice}
+					</h:column>
+	
+					<h:column>
+						<f:facet name="header">Quentity</f:facet>
+						<h:commandLink styleClass="btn-link pl-2 pr-2">
+							<i class="fa fa-minus"></i>
+							<f:ajax execute="@this" render="@form" listener="#{shoppingCart.countDown(od)}"></f:ajax>
+						</h:commandLink>						
+						#{od.quentity}
+						<h:commandLink styleClass="btn-link pl-2 pr-2">
+							<i class="fa fa-plus"></i>
+							<f:ajax execute="@this" render="@form" listener="#{od.countUp()}"></f:ajax>
+						</h:commandLink>						
+						<f:facet name="footer">
+							Sub Total						
+						</f:facet>
+					</h:column>
+	
+					<h:column>
+						<f:facet name="header">Total</f:facet>
+						#{od.unitPrice * od.quentity}
+						<f:facet name="footer">
+							#{shoppingCart.subTotal}						
+						</f:facet>
+					</h:column>
+					
+				</h:dataTable>
+			</h:form>			
+			
+			<h:link outcome="/check-out" styleClass="btn btn-danger">
+				<i class="fa fa-send"></i> Check Out
+			</h:link>
+		</ui:define>
 	</ui:composition>
 </html>
