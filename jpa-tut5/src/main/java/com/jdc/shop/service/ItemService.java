@@ -36,7 +36,7 @@ public class ItemService {
 		}
 		
 		if(null != tag && !tag.isEmpty()) {
-			sb.append(" and :tag in i.tags");
+			sb.append(" and :tag member of i.tags");
 			params.put("tag", tag);
 		}
 
