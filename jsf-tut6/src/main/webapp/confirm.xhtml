@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>User Details</title>
+</h:head> 
+<body> 
+
+	<h1>User Details Information</h1>
+	
+	<h:form>
+		
+		<h:panelGrid columns="2">
+			
+			<h:outputText value="Name" />
+			<h:outputText value="#{userRegistration.user.name}" />
+			
+			<h:outputText value="Work" />
+			<h:outputText value="#{userRegistration.user.profile.work}" />
+
+			<h:outputText value="College" />
+			<h:outputText value="#{userRegistration.user.profile.college}" />
+			
+			<h:outputText value="Street" />
+			<h:outputText value="#{userRegistration.user.address.street}" />
+
+			<h:outputText value="Township" />
+			<h:outputText value="#{userRegistration.user.address.township}" />
+
+			<h:outputText value="City" />
+			<h:outputText value="#{userRegistration.user.address.city}" />
+
+			<h:outputText value="Greeting" />
+			<h:outputText value="#{userRegistration.user.profile.greeting}" />
+			
+			<h:panelGroup></h:panelGroup>
+			<h:panelGroup>
+				<h:commandButton action="profile" value="Previous" />
+				<h:commandButton action="#{userRegistration.confirm()}" value="Done" />
+			</h:panelGroup>
+		</h:panelGrid>
+	
+	</h:form>
+	
+</body> 
+</html>

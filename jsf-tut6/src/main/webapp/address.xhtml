@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Address</title>
+</h:head> 
+<body> 
+
+	<h1>Address for #{userRegistration.user.name}</h1>
+
+	<h:form>
+		<h:panelGrid columns="2">
+
+			<h:outputText value="Street" />
+			<h:inputText value="#{userRegistration.user.address.street}" />
+
+			<h:outputText value="Township" />
+			<h:inputText value="#{userRegistration.user.address.township}" />
+
+			<h:outputText value="City" />
+			<h:inputText value="#{userRegistration.user.address.city}" />
+			
+			<h:panelGroup></h:panelGroup>
+			<h:panelGroup>
+				<h:commandButton action="user" value="Previous" />
+				<h:commandButton action="profile" value="Next" />
+			</h:panelGroup>
+		</h:panelGrid>
+	</h:form>
+</body> 
+</html>

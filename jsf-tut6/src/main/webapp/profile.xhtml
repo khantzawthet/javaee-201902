@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Profile</title>
+</h:head> 
+<body> 
+
+	<h1>Profile for #{userRegistration.user.name}</h1>
+
+	<h:form>
+		<h:panelGrid columns="2">
+
+			<h:outputText value="College" />
+			<h:inputText value="#{userRegistration.user.profile.college}" />
+
+			<h:outputText value="Work" />
+			<h:inputText value="#{userRegistration.user.profile.work}" />
+
+			<h:outputText value="Greeting" />
+			<h:inputTextarea value="#{userRegistration.user.profile.greeting}" cols="40" rows="5" />
+			
+			<h:panelGroup></h:panelGroup>
+			<h:panelGroup>
+				<h:commandButton action="address" value="Previous" />
+				<h:commandButton action="confirm" value="Next" />
+			</h:panelGroup>
+		</h:panelGrid>
+	</h:form>
+</body> 
+</html>
