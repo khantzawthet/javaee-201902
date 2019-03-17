@@ -20,7 +20,7 @@ public class ItemService {
 	@PersistenceContext
 	private EntityManager em;
 
-	public List<Item> search(Category category, String name) {
+	public List<Item> search(Category category, String name, String tag) {
 		
 		StringBuffer sb = new StringBuffer("select i from Item i where 1=1");
 		Map<String, Object> params = new HashMap<>();
@@ -35,6 +35,11 @@ public class ItemService {
 			params.put("name", name.concat("%"));
 		}
 		
+		if(null != tag && !tag.isEmpty()) {
+			sb.append(" and :tag in i.tags");
+			params.put("tag", tag);
+		}
+
 		TypedQuery<Item> query = em.createQuery(sb.toString(), Item.class);
 		for(String key : params.keySet()) {
 			query.setParameter(key, params.get(key));

@@ -16,6 +16,8 @@ public class ItemListBean {
 
 	private Category category;
 	private String name;
+	private String tag;
+	
 	private List<Item> items;
 	private List<Category> categories;
 	
@@ -30,8 +32,16 @@ public class ItemListBean {
 	}
 
 	public String search() {
-		items = itemService.search(category, name);
+		items = itemService.search(category, name, tag);
 		return "/items";
+	}
+
+	public String getTag() {
+		return tag;
+	}
+
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
 
 	public Category getCategory() {

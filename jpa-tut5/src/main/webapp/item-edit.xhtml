@@ -30,10 +30,8 @@
 				
 				<div class="form-group row">
 					<h:outputLabel value="Tags" styleClass="col-2" />
-					<ui:repeat var="t" value="#{itemEditBean.item.tags}">
-						<h:inputText id="tag" value="#{t}" styleClass="form-control col-2 mr-2" >
-						
-						</h:inputText>
+					<ui:repeat var="t" value="#{itemEditBean.tags}">
+						<h:inputText id="tag" value="#{t.value}" styleClass="form-control col-2 mr-2" />
 					</ui:repeat>
 					
 					<div class="col-2">

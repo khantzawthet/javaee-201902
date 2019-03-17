@@ -1,6 +1,7 @@
 package com.jdc.shop.beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,6 +10,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.jdc.shop.beans.dto.Tag;
 import com.jdc.shop.entity.Category;
 import com.jdc.shop.entity.Item;
 import com.jdc.shop.service.CategoryService;
@@ -23,37 +25,49 @@ public class ItemEditBean implements Serializable {
 	private Item item;
 	private List<Category> categories;
 
+	private List<Tag> tags;
+
 	@Inject
 	private CategoryService catService;
 	@Inject
 	private ItemService itemService;
-	
+
 	@PostConstruct
 	private void init() {
 
 		item = new Item();
-		item.getTags().add("");
+		tags = new ArrayList<>();
+		tags.add(new Tag());
+		
 		categories = catService.getAll();
 	}
 
 	public String save() {
-		List<String> tags = item.getTags().stream()
-				.filter(a -> a != null && !a.isEmpty())
-				.collect(Collectors.toList());
-		
-		item.setTags(tags);
-		
+		List<String> list = tags.stream().filter(a -> null != a.getValue() && !a.getValue().isEmpty())
+			.map(a -> a.getValue())
+			.collect(Collectors.toList());
+
+		item.setTags(list);
+
 		itemService.save(item);
 		return "/items?faces-redirect=true";
 	}
 
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+
 	public void addTag() {
-		item.getTags().add("");
+		tags.add(new Tag());
 	}
 
 	public void removeTag() {
-		item.getTags().remove(item.getTags().size() - 1);
-		if(item.getTags().size() == 0) {
+		tags.remove(tags.size() - 1);
+		if (tags.size() == 0) {
 			addTag();
 		}
 	}
