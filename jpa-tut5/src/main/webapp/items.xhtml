@@ -12,7 +12,7 @@
 			<h:form styleClass="form-inline">
 				<div class="form-group mr-4">
 					<label class="mr-2">Category</label>
-					<h:selectOneMenu converter="#{categoryConverter}" styleClass="form-control" value="#{itemListBean.category}">
+					<h:selectOneMenu converter="#{categoryConverter}" styleClass="custom-select" value="#{itemListBean.category}">
 						<f:selectItems value="#{itemListBean.categories}" var="c" itemValue="#{c}" itemLabel="#{c.name}"></f:selectItems>
 					</h:selectOneMenu>
 				</div>

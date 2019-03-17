@@ -37,16 +37,17 @@ public class Invoice implements Serializable{
 	@OneToMany(mappedBy = "invoice", cascade = { PERSIST, MERGE })
 	private List<OrderDetails> orders;
 	
-	public int getSubTotal() {
+	public Integer getSubTotal() {
 		return orders.stream().mapToInt(a -> a.getQuentity() * a.getUnitPrice()).sum();
 	}
 	
-	public double getTax() {
-		return getSubTotal() * 0.05;
+	public Integer getTax() {
+		Double tax = getSubTotal() * 0.05;
+		return tax.intValue();
 	}
 	
-	public double getTotal() {
-		return getSubTotal() * getTax();
+	public Integer getTotal() {
+		return getSubTotal() + getTax();
 	}
 	
 	public Invoice() {

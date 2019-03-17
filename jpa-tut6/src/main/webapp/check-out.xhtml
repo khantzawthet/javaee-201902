@@ -7,34 +7,79 @@
 	<ui:composition template="/WEB-INF/template.xhtml">
 	
 		<ui:define name="title">Check Out</ui:define>
-		
-		<ui:define name="page-title"><i class="fa fa-shopping-cart"></i> Check Out - My Orders</ui:define>
-		
+				
 		<ui:define name="content">
+		
 			
-			<h:dataTable value="#{shoppingCart.orders}" var="od" styleClass="table table-info">
+			<div class="row">
 				
-				<h:column>
-					<f:facet name="header">Product</f:facet>
-					#{od.product.name}
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Unit Price</f:facet>
-					#{od.unitPrice}
-				</h:column>
+				<h:form styleClass="col-8">
+					
+					<div class="form-group">
+						<h3><i class="fa fa-user-circle-o"></i> Customer Information</h3>
+					</div>
 
-				<h:column>
-					<f:facet name="header">Quentity</f:facet>
-					#{od.quentity}
-				</h:column>
-
-				<h:column>
-					<f:facet name="header">Total</f:facet>
-					#{od.unitPrice * od.quentity}
-				</h:column>
+					<div class="form-group row align-middle d-flex">
+						<span class="col-3">Customer Name</span>
+						<h:inputText value="#{checkOutBean.invoice.customer.name}" styleClass="form-control col-9" />
+					</div>
 				
-			</h:dataTable>
+					<div class="form-group row align-middle d-flex">
+						<span class="col-3">Contact Phone</span>
+						<h:inputText value="#{checkOutBean.invoice.customer.name}" styleClass="form-control col-9" />
+					</div>
+
+					<div class="form-group row align-middle d-flex">
+						<span class="col-3">Email Address</span>
+						<h:inputText value="#{checkOutBean.invoice.customer.name}" styleClass="form-control col-9" />
+					</div>
+					
+					<div class="form-group">
+						<h3><i class="fa fa-ship"></i> Shipping Information</h3>
+					</div>
+
+					<div class="form-group row align-middle d-flex">
+						<span class="col-3">Postal Code</span>
+						<h:inputText value="#{checkOutBean.invoice.address.postalCode}" styleClass="form-control col-9" />
+					</div>
+
+					<div class="form-group row align-middle d-flex">
+						<span class="col-3">Street</span>
+						<h:inputText value="#{checkOutBean.invoice.address.street}" styleClass="form-control col-9" />
+					</div>
+
+					<div class="form-group row align-middle d-flex">
+						<span class="col-3">Township</span>
+						<h:inputText value="#{checkOutBean.invoice.address.township}" styleClass="form-control col-9" />
+					</div>
+
+					<div class="form-group row align-middle d-flex">
+						<span class="col-3">City</span>
+						<h:inputText value="#{checkOutBean.invoice.address.city}" styleClass="form-control col-9" />
+					</div>
+
+					<div class="form-group">
+						<h3><i class="fa fa-credit-card-alt"></i> Billing Information</h3>
+					</div>
+
+					<div class="form-group row align-middle d-flex">
+						<span class="col-3">Credit Card</span>
+						<h:inputText value="#{checkOutBean.invoice.billingInfo.creditCompany}" styleClass="form-control col-9" />
+					</div>
+
+					<div class="form-group row align-middle d-flex">
+						<span class="col-3">Card Number</span>
+						<h:inputText value="#{checkOutBean.invoice.billingInfo.cardNumber}" styleClass="form-control col-9" />
+					</div>
+					
+					<div class="form-group row align-middle d-flex">
+						<h:commandLink action="confirmation" styleClass="offset-3 btn btn-primary" >
+							<i class="fa fa-check"></i> Confirm
+						</h:commandLink>
+					</div>
+				</h:form>
+			
+			</div>
 			
 		</ui:define>
 	</ui:composition>

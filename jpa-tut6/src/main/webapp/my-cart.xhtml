@@ -37,7 +37,9 @@
 							<f:ajax execute="@this" render="@form" listener="#{od.countUp()}"></f:ajax>
 						</h:commandLink>						
 						<f:facet name="footer">
-							Sub Total						
+							<label class="d-block">Sub Total</label>
+							<label class="d-block">Tax</label>
+							<label class="d-block">Total</label>
 						</f:facet>
 					</h:column>
 	
@@ -45,16 +47,23 @@
 						<f:facet name="header">Total</f:facet>
 						#{od.unitPrice * od.quentity}
 						<f:facet name="footer">
-							#{shoppingCart.subTotal}						
+							<label class="d-block">#{shoppingCart.subTotal}</label>
+							<label class="d-block">#{shoppingCart.tax}</label>
+							<label class="d-block">#{shoppingCart.total}</label>
 						</f:facet>
 					</h:column>
 					
 				</h:dataTable>
+				
+				<h:commandLink actionListener="#{shoppingCart.clear()}" styleClass="btn btn-danger mr-2 #{shoppingCart.subTotal eq 0 ? 'd-none' : ''}">
+					<f:ajax execute="@this" render="@form cartCount"></f:ajax>
+					<i class="fa fa-trash"></i> Clear
+				</h:commandLink>
+				<h:link outcome="/check-out" styleClass="btn btn-success #{shoppingCart.subTotal eq 0 ? 'd-none' : ''}">
+					<i class="fa fa-send"></i> Check Out
+				</h:link>
 			</h:form>			
 			
-			<h:link outcome="/check-out" styleClass="btn btn-danger">
-				<i class="fa fa-send"></i> Check Out
-			</h:link>
 		</ui:define>
 	</ui:composition>
 </html>
