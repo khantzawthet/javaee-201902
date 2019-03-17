@@ -62,4 +62,8 @@ public class OrderDetails implements Serializable{
 		this.unitPrice = unitPrice;
 	}
 
+	public void countUp() {
+		quentity ++;
+	}
+
 }

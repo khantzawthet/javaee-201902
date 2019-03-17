@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.OneToMany;
 import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.CascadeType.MERGE;
@@ -23,11 +24,11 @@ public class Invoice implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@ManyToOne
-	private Member customer;
-	@OneToOne
-	private Address address;
 	private LocalDateTime invoiceTime;
+	@ManyToOne(cascade = { PERSIST, MERGE })
+	private Member customer;
+	@OneToOne(cascade = { PERSIST, MERGE })
+	private Address address;
 
 	@OneToOne
 	private BillingInformation billingInfo;
@@ -36,6 +37,14 @@ public class Invoice implements Serializable{
 	
 	public Invoice() {
 		orders = new ArrayList<>();
+		customer = new Member();
+		address = new Address();
+		billingInfo = new BillingInformation();
+	}
+	
+	@PrePersist
+	private void prePersit() {
+		invoiceTime = LocalDateTime.now();
 	}
 	
 	public void add(OrderDetails od) {
