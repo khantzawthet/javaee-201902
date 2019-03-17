@@ -18,6 +18,7 @@ public class OrderDetails implements Serializable{
 	private Long id;
 	@ManyToOne
 	private Invoice invoice;
+	@ManyToOne
 	private Product product;
 	private int quentity;
 	private int unitPrice;

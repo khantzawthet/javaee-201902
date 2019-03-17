@@ -21,7 +21,9 @@ public class InvoiceService {
 	}
 
 	public List<Invoice> getAll() {
-		return em.createNamedQuery("Invoice.getAll", Invoice.class).getResultList();
+		List<Invoice> list = em.createNamedQuery("Invoice.getAll", Invoice.class).getResultList();
+		list.forEach(a -> a.getSubTotal());
+		return list;
 	}
 	
 }

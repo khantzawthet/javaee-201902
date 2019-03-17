@@ -32,7 +32,7 @@ public class Invoice implements Serializable{
 	@OneToOne(cascade = { PERSIST, MERGE })
 	private Address address;
 
-	@OneToOne
+	@OneToOne(cascade = { PERSIST, MERGE })
 	private BillingInformation billingInfo;
 	@OneToMany(mappedBy = "invoice", cascade = { PERSIST, MERGE })
 	private List<OrderDetails> orders;
@@ -113,6 +113,10 @@ public class Invoice implements Serializable{
 
 	public void setOrders(List<OrderDetails> orders) {
 		this.orders = orders;
+		
+		for(OrderDetails od : orders) {
+			od.setInvoice(this);
+		}
 	}
 
 }

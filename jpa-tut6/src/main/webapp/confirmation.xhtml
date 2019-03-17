@@ -1,9 +1,136 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
 
-	<ui:composition template="">
+	<ui:composition template="/WEB-INF/template.xhtml">
+	
+		<ui:define name="title">Check Out</ui:define>
+		
+		<ui:define name="page-title"><i class="fa fa-envelope-open-o"></i> Invoice Details</ui:define>
+	
+		<ui:define name="content">
+			
+			<h:form >
+			
+				<div class="row">
+				
+					<div class="col">
+						<div class="card bg-secondary">
+							<div class="card-body text-light">
+								<h4><i class="fa fa-user-circle-o"></i> Customer</h4>
+								
+								<div class="row">
+									<span class="col-4">Customer</span>
+									<h:outputText value="#{checkOutBean.invoice.customer.name}" />
+								</div>
+
+								<div class="row">
+									<span class="col-4">Invoice Amount</span>
+									<h:outputText value="#{shoppingCart.total} MMK" />
+								</div>
+
+								<div class="row">
+									<span class="col-4">Invoice Date</span>
+									<h:outputText value="#{shoppingCart.invoiceDate}" converter="#{localDateConverter}" />
+								</div>
+
+								<div class="row">
+									<span class="col-4">Phone Number</span>
+									<h:outputText value="#{checkOutBean.invoice.customer.phone}" />
+								</div>
+
+								<div class="row">
+									<span class="col-4">Email Address</span>
+									<h:outputText value="#{checkOutBean.invoice.customer.email}" />
+								</div>
+
+							</div>
+						</div>
+					</div>
+				
+					<div class="col">
+						<div class="card bg-primary">
+						
+							<div class="card-body text-light">
+								<h4><i class="fa fa-ship"></i> Shipping</h4>
+								
+								<div class="row">
+									<span class="col-4">Credit</span>
+									<h:outputText value="#{checkOutBean.invoice.billingInfo.creditCompany}" />
+								</div>
+
+								<div class="row">
+									<span class="col-4">Card Number</span>
+									<h:outputText value="#{checkOutBean.invoice.billingInfo.cardNumber}" />
+								</div>
+
+								<div class="row">
+									<span class="col-4">Postal Code</span>
+									<h:outputText value="#{checkOutBean.invoice.address.postalCode}" />
+								</div>
+
+								<div class="row">
+									<span class="col-4">Street</span>
+									<h:outputText value="#{checkOutBean.invoice.address.street}" />
+								</div>
+
+								<div class="row">
+									<span class="col-4">Township</span>
+									<h:outputText value="#{checkOutBean.invoice.address.township}, #{checkOutBean.invoice.address.city}" />
+								</div>
+
+							</div>
+						</div>
+					</div>
+		
+				</div>
+				
+				<h:dataTable value="#{shoppingCart.orders}" var="od" styleClass="mt-4 table table-info">
+					
+					<h:column>
+						<f:facet name="header">Product</f:facet>
+						#{od.product.name}
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">Unit Price</f:facet>
+						#{od.unitPrice}
+					</h:column>
+	
+					<h:column>
+						<f:facet name="header">Quentity</f:facet>
+						#{od.quentity}
+						<f:facet name="footer">
+							<label class="d-block">Sub Total</label>
+							<label class="d-block">Tax</label>
+							<label class="d-block">Total</label>
+						</f:facet>
+					</h:column>
+	
+					<h:column>
+						<f:facet name="header">Total</f:facet>
+						#{od.unitPrice * od.quentity}
+						<f:facet name="footer">
+							<label class="d-block">#{shoppingCart.subTotal}</label>
+							<label class="d-block">#{shoppingCart.tax}</label>
+							<label class="d-block">#{shoppingCart.total}</label>
+						</f:facet>
+					</h:column>
+					
+				</h:dataTable>			
+				
+				<div>
+					<h:commandLink action="check-out" styleClass="btn btn-info mr-2">
+						<i class="fa fa-pencil"></i> Edit
+					</h:commandLink>
+					<h:commandLink action="#{checkOutBean.checkOut()}" styleClass="btn btn-primary">
+						<i class="fa fa-send"></i> Check Out
+					</h:commandLink>
+				</div>	
+			</h:form>
+		
+		</ui:define>
 	</ui:composition>
 </html>

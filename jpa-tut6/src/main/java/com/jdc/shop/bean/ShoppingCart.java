@@ -1,6 +1,7 @@
 package com.jdc.shop.bean;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,6 +81,10 @@ public class ShoppingCart implements Serializable {
 	
 	public Integer getTotal() {
 		return getSubTotal() + getTax();
+	}
+	
+	public LocalDate getInvoiceDate() {
+		return LocalDate.now();
 	}
 
 }
