@@ -1,0 +1,11 @@
+insert into product (name, maker, price) values ('Coke', 'Cocala', 500);
+insert into product (name, maker, price) values ('Potato Chips', 'Oishi', 500);
+insert into product (name, maker, price) values ('Crackers', 'Oishi', 800);
+insert into product (name, maker, price) values ('Cheese Cake', 'Pucci Cake', 350);
+insert into product (name, maker, price) values ('Pencil', 'Myanmar Book Store', 200);
+insert into product (name, maker, price) values ('Pen', 'Myanmar Book Store', 300);
+insert into product (name, maker, price) values ('Nest Coffee', 'Nest Coffee', 600);
+insert into product (name, maker, price) values ('Cafe Late', 'Nest Coffee', 600);
+insert into product (name, maker, price) values ('Sunday Coffee', 'Sunday Coffee', 500);
+insert into product (name, maker, price) values ('One Tea', 'One Tea', 450);
+insert into product (name, maker, price) values ('Ice Coffee', 'Super CoffeeMix', 400);
