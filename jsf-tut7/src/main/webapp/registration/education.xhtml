@@ -1,0 +1,33 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Education</title>
+</h:head> 
+<body> 
+	<h1>Education</h1>
+	
+	<h:form>
+		<h:panelGrid columns="2">
+		
+			<span>Major</span>
+			<h:inputText value="#{studentRegistrationBean.student.eduction.major}" />
+			
+			<span>Year</span>
+			<h:inputText value="#{studentRegistrationBean.student.eduction.year}" />
+
+			<span>College</span>
+			<h:inputText value="#{studentRegistrationBean.student.eduction.college}" />
+
+			<span></span>
+			<h:panelGroup>
+				<h:commandButton action="contact" value="Back" />
+				<h:commandButton action="confirm" value="Next" />
+			</h:panelGroup>
+		</h:panelGrid>
+	</h:form>
+</body> 
+</html>

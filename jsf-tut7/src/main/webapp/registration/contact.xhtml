@@ -1,0 +1,39 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Contact</title>
+</h:head> 
+<body> 
+	<h1>Contact</h1>
+	
+	<h:form>
+		<h:panelGrid columns="2">
+		
+			<span>Phone</span>
+			<h:inputText value="#{studentRegistrationBean.student.contact.phone}" />
+
+			<span>Email</span>
+			<h:inputText value="#{studentRegistrationBean.student.contact.email}" />
+
+			<span>Street</span>
+			<h:inputText value="#{studentRegistrationBean.student.contact.street}" />
+
+			<span>Township</span>
+			<h:inputText value="#{studentRegistrationBean.student.contact.township}" />
+
+			<span>City</span>
+			<h:inputText value="#{studentRegistrationBean.student.contact.city}" />
+			
+			<span></span>
+			<h:panelGroup>
+				<h:commandButton action="registration" value="Back" />
+				<h:commandButton action="education" value="Next" />
+			</h:panelGroup>
+		</h:panelGrid>
+	</h:form>
+</body> 
+</html>

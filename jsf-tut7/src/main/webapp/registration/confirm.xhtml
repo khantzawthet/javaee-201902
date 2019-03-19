@@ -1,0 +1,51 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Confirmation</title>
+</h:head> 
+<body> 
+
+	<h1>Confirmation</h1>
+	
+	<h:form>
+		<h:panelGrid columns="2">
+			<span>name</span>
+			<h:outputText value="#{studentRegistrationBean.student.name}" />
+			
+			<span>Gender</span>
+			<h:outputText value="#{studentRegistrationBean.student.gender}" />
+
+			<span>Date of Birth</span>
+			<h:outputText value="#{studentRegistrationBean.student.dob}" converter="#{localDateConverter}" />
+			
+			<span>Phone</span>
+			<h:outputText value="#{studentRegistrationBean.student.contact.phone}" />
+
+			<span>Email</span>
+			<h:outputText value="#{studentRegistrationBean.student.contact.email}" />
+
+			<span>Address</span>
+			<h:outputText value="#{studentRegistrationBean.student.contact.address}" />
+			
+			<span>Major</span>
+			<h:outputText value="#{studentRegistrationBean.student.eduction.major}" />
+
+			<span>Year</span>
+			<h:outputText value="#{studentRegistrationBean.student.eduction.year}" />
+
+			<span>School</span>
+			<h:outputText value="#{studentRegistrationBean.student.eduction.college}" />
+			
+			<span></span>
+			<h:panelGroup>
+				<h:commandButton action="education" value="Back" />		
+				<h:commandButton action="#{studentRegistrationBean.save()}" value="Save" />
+			</h:panelGroup>
+		</h:panelGrid>
+	</h:form>
+</body> 
+</html>

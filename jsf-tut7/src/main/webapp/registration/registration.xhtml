@@ -1,0 +1,34 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Personal Information</title>
+</h:head> 
+<body> 
+
+	<h1>Personal Information</h1>
+	
+	<h:form>
+	
+		<h:panelGrid columns="2">
+			<span>Name</span>
+			<h:inputText value="#{studentRegistrationBean.student.name}" />
+			
+			<span>Gender</span>
+			<h:selectOneRadio value="#{studentRegistrationBean.student.gender}">
+				<f:selectItem itemLabel="Male" itemValue="Male" />
+				<f:selectItem itemLabel="Female" itemValue="Female"/>
+			</h:selectOneRadio>
+			
+			<span>Date of Birth</span>
+			<h:inputText value="#{studentRegistrationBean.student.dob}" converter="#{localDateConverter}" />
+			
+			<span></span>
+			<h:commandButton action="contact" value="Next" />
+		</h:panelGrid>
+	</h:form>
+</body> 
+</html>
