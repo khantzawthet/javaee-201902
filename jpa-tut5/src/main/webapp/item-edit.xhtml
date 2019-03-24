@@ -14,7 +14,7 @@
 				<div class="form-group row">
 					<h:outputLabel styleClass="col-2" value="Category" />
 					<h:selectOneMenu id="category" value="#{itemEditBean.item.category}" converter="#{categoryConverter}" styleClass="custom-select col-3">
-						<f:selectItems value="#{itemEditBean.categories}" var="c" itemValue="#{c}" itemLabel="#{c.name}"></f:selectItems>
+						<f:selectItems value="#{categories}" var="c" itemValue="#{c}" itemLabel="#{c.name}"></f:selectItems>
 					</h:selectOneMenu>
 				</div>
 				

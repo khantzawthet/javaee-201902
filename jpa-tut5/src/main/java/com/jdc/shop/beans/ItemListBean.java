@@ -2,13 +2,11 @@ package com.jdc.shop.beans;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
 import com.jdc.shop.entity.Category;
 import com.jdc.shop.entity.Item;
-import com.jdc.shop.service.CategoryService;
 import com.jdc.shop.service.ItemService;
 
 @Model
@@ -19,17 +17,9 @@ public class ItemListBean {
 	private String tag;
 	
 	private List<Item> items;
-	private List<Category> categories;
-	
-	@Inject
-	private CategoryService catService;
+
 	@Inject
 	private ItemService itemService;
-
-	@PostConstruct
-	private void init() {
-		categories = catService.getAll();
-	}
 
 	public String search() {
 		items = itemService.search(category, name, tag);
@@ -62,10 +52,6 @@ public class ItemListBean {
 
 	public List<Item> getItems() {
 		return items;
-	}
-
-	public List<Category> getCategories() {
-		return categories;
 	}
 
 }

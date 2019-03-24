@@ -11,9 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.jdc.shop.beans.dto.Tag;
-import com.jdc.shop.entity.Category;
 import com.jdc.shop.entity.Item;
-import com.jdc.shop.service.CategoryService;
 import com.jdc.shop.service.ItemService;
 
 @Named
@@ -23,12 +21,9 @@ public class ItemEditBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Item item;
-	private List<Category> categories;
 
 	private List<Tag> tags;
 
-	@Inject
-	private CategoryService catService;
 	@Inject
 	private ItemService itemService;
 
@@ -39,7 +34,6 @@ public class ItemEditBean implements Serializable {
 		tags = new ArrayList<>();
 		tags.add(new Tag());
 		
-		categories = catService.getAll();
 	}
 
 	public String save() {
@@ -78,10 +72,6 @@ public class ItemEditBean implements Serializable {
 
 	public void setItem(Item item) {
 		this.item = item;
-	}
-
-	public List<Category> getCategories() {
-		return categories;
 	}
 
 }
