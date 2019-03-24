@@ -1,0 +1,44 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Customers</title>
+</h:head> 
+<body> 
+
+	<h1>Customer List</h1>
+	
+	<h:form>
+		<label>Day</label>
+		<h:selectOneMenu value="#{customerBean.day}">
+			<f:selectItems value="#{days}" var="d" itemLabel="#{d}" itemValue="#{d}"></f:selectItems>
+		</h:selectOneMenu>
+		
+		<label>Name</label>
+		<h:inputText value="#{customerBean.name}" />
+		<h:commandButton action="#{customerBean.search()}" value="Search" />
+	</h:form>
+
+	<h:dataTable value="#{customerBean.list}" var="c">
+		<h:column>
+			<f:facet name="header">ID</f:facet>
+			#{c.id}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Name</f:facet>
+			#{c.name}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Phone</f:facet>
+			#{c.phone}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Email</f:facet>
+			#{c.email}
+		</h:column>
+	</h:dataTable>
+</body> 
+</html>

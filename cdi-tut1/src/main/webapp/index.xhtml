@@ -1,0 +1,47 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>CDI Tutorial</title>
+</h:head> 
+<body> 
+	
+	<h1>Student Registration</h1>
+	
+	<h:form>
+		<h:panelGrid columns="2">
+			
+			<h:outputLabel value="Name" />
+			<h:inputText value="#{studentRepository.student.name}" />
+			
+			<h:outputLabel value="Phone" />
+			<h:inputText value="#{studentRepository.student.phone}" />
+			
+			<span></span>
+			<h:commandButton action="#{studentRepository.save()}" value="Save" />
+		
+		</h:panelGrid>
+	</h:form>
+	
+	<h:dataTable value="#{studentRepository.students}" var="s">
+		
+		<h:column>
+			<f:facet name="header">ID</f:facet>
+			#{s.id}
+		</h:column>
+	
+		<h:column>
+			<f:facet name="header">Name</f:facet>
+			#{s.name}
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Phone</f:facet>
+			#{s.phone}
+		</h:column>
+	</h:dataTable>
+</body> 
+</html>
