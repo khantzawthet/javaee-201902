@@ -2,27 +2,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"> 
 
-<h:head>
-	<title>#{roomManageBean.title}</title>
-</h:head> 
-<body> 
-
-	<h1>#{roomManageBean.title}</h1>
+<ui:composition template="/WEB-INF/template.xhtml">
 	
-	<h:form>
-		<h:panelGrid columns="2">
-			
-			<h:outputLabel value="Room Number" />
-			<h:inputText value="#{roomManageBean.room.roomNumber}" />
-			
-			<h:outputLabel value="Bed Count" />
-			<h:inputText value="#{roomManageBean.room.bed}" />
-			
-			<span></span>
-			<h:commandButton action="#{roomManageBean.save()}" value="Save" />
-		</h:panelGrid>
-	</h:form>
-</body> 
+	<ui:define name="title">#{roomManageBean.title}</ui:define>
+	
+	<ui:define name="header"><i class="fa #{roomManageBean.room.id eq 0 ? 'fa-plus' : 'fa-edit'}"></i> #{roomManageBean.title}</ui:define>
+	
+	<ui:define name="content">
+		
+		<div class="row">
+
+			<h:form styleClass="col-lg-6 col-md-8 col-sm-12">
+				
+				<div class="form-group">
+					<h:outputLabel value="Room Number" />
+					<h:inputText styleClass="form-control" value="#{roomManageBean.room.roomNumber}" />
+				</div>
+				
+				<div class="form-group">
+					<h:outputLabel value="Bed Count" />
+					<h:inputText styleClass="form-control" value="#{roomManageBean.room.bed}" />
+				</div>
+				
+				<h:commandLink action="#{roomManageBean.save()}" styleClass="btn btn-primary" >
+					<i class="fa fa-save"></i> Save
+				</h:commandLink>
+	
+			</h:form>
+		</div>
+	
+	</ui:define>		
+
+</ui:composition>
+
 </html>

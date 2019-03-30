@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Registration implements HotelEntity {
@@ -15,8 +17,12 @@ public class Registration implements HotelEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@NotNull(message = "Please enter Check In Date.")
 	private LocalDate checkIn;
+	@NotNull(message = "Please enter Check Out Date.")
 	private LocalDate checkOut;
+	@NotEmpty(message = "Please enter Customer Name.")
 	private String customer;
 	
 	@ManyToOne

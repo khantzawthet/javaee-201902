@@ -1,0 +1,74 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"> 
+	
+<ui:composition template="/WEB-INF/template.xhtml">
+	
+	<ui:define name="title">Registrations</ui:define>
+	
+	<ui:define name="header"><i class="fa fa-book"></i> Registrations</ui:define>
+	
+	<ui:define name="content">
+	
+		<h:form styleClass="form-inline">
+			
+			<div class="form-group mr-4">
+				<h:outputLabel value="Room" styleClass="mr-2" />
+				<h:selectOneMenu value="#{registrationListBean.room}" converter="#{roomConverter}" styleClass="dropdown form-control">
+					<f:selectItems value="#{rooms}" var="r" itemValue="#{r}" itemLabel="#{r.roomNumber}" />
+				</h:selectOneMenu>
+			</div>
+			
+			<div class="form-group mr-4">
+				<h:outputLabel value="Customer" styleClass="mr-2"/>
+				<h:inputText value="#{registrationListBean.customer}" styleClass="form-control" p:placeholder="Customer Name" />
+			</div>
+			
+			<h:commandLink action="#{registrationListBean.search()}" styleClass="btn btn-primary">
+				<i class="fa fa-search"></i> Search
+			</h:commandLink>
+			
+		</h:form>
+		
+		<h:dataTable styleClass="mt-4 table table-info" value="#{registrationListBean.registrations}" var="r">
+		
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				#{r.id}
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Customer</f:facet>
+				#{r.customer}
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Room</f:facet>
+				#{r.room.roomNumber}
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Check In</f:facet>
+				<h:outputText value="#{r.checkIn}" converter="LocalDateConverter" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Check Out</f:facet>
+				<h:outputText value="#{r.checkOut}" converter="LocalDateConverter" />
+			</h:column>
+
+			<h:column>
+				<h:link outcome="/registration-edit" styleClass="btn-link">
+					<i class="fa fa-pencil"></i>
+				</h:link>
+			</h:column>
+
+		</h:dataTable>
+	
+	</ui:define>		
+
+</ui:composition>
+</html>

@@ -1,14 +1,16 @@
 package com.jdc.jpa.bean;
 
 import java.io.Serializable;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.jdc.jpa.entity.Room;
+import com.jdc.jpa.interceptor.ErrorHandler;
+import com.jdc.jpa.producer.ParameterMap;
 import com.jdc.jpa.service.RoomService;
 
 @Named
@@ -21,12 +23,13 @@ public class RoomManageBean implements Serializable{
 	
 	@Inject
 	private RoomService service;
+	@Inject
+	@ParameterMap
+	private Map<String, String> params;
 	
 	@PostConstruct
 	private void init() {
-		String id = FacesContext.getCurrentInstance()
-				.getExternalContext()
-				.getRequestParameterMap().get("id");
+		String id = params.get("id");
 				
 		if(null != id) {
 			room = service.findById(Integer.parseInt(id));
@@ -35,6 +38,7 @@ public class RoomManageBean implements Serializable{
 		}
 	}
 	
+	@ErrorHandler
 	public String save() {
 		service.save(room);
 		return "/index?faces-redirect=true";

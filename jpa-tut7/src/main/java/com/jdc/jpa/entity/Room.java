@@ -57,5 +57,36 @@ public class Room implements HotelEntity{
 		this.security = security;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + bed;
+		result = prime * result + id;
+		result = prime * result + ((roomNumber == null) ? 0 : roomNumber.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Room other = (Room) obj;
+		if (bed != other.bed)
+			return false;
+		if (id != other.id)
+			return false;
+		if (roomNumber == null) {
+			if (other.roomNumber != null)
+				return false;
+		} else if (!roomNumber.equals(other.roomNumber))
+			return false;
+		return true;
+	}
+
 	
 }

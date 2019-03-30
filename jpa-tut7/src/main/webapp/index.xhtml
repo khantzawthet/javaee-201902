@@ -2,41 +2,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"> 
 
-<h:head>
-	<title>Rooms</title>
-</h:head> 
-<body>
 
-	<h1>Rooms</h1>
+<ui:composition template="/WEB-INF/template.xhtml">
 	
-	<h:link outcome="/room-edit" value="Add New"/>
+	<ui:define name="title">Rooms</ui:define>
 	
-	<h:dataTable value="#{rooms}" var="r">
-		
-		<h:column>
-			<f:facet name="header">ID</f:facet>
-			#{r.id}
-		</h:column>
-
-		<h:column>
-			<f:facet name="header">Room Number</f:facet>
-			#{r.roomNumber}
-		</h:column>
-
-		<h:column>
-			<f:facet name="header">Beds</f:facet>
-			#{r.bed}
-		</h:column>
-
-		<h:column>
-			<f:facet name="header">Edit</f:facet>
-			<h:link outcome="/room-edit" value="Edit">
-				<f:param name="id" value="#{r.id}"></f:param>
-			</h:link>
-		</h:column>
-	</h:dataTable>
+	<ui:define name="header"><i class="fa fa-th-large"></i> Rooms</ui:define>
 	
-</body> 
+	<ui:define name="content">
+
+		<h:dataTable value="#{rooms}" var="r" styleClass="table table-info">
+			
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				#{r.id}
+			</h:column>
+	
+			<h:column>
+				<f:facet name="header">Room Number</f:facet>
+				#{r.roomNumber}
+			</h:column>
+	
+			<h:column>
+				<f:facet name="header">Beds</f:facet>
+				#{r.bed}
+			</h:column>
+	
+			<h:column>
+				<h:link outcome="/room-edit" styleClass="btn-link">
+					<f:param name="id" value="#{r.id}"></f:param>
+					<i class="fa fa-pencil"></i>
+				</h:link>
+			</h:column>
+		</h:dataTable>
+	
+	</ui:define>
+	
+</ui:composition>
+
 </html>

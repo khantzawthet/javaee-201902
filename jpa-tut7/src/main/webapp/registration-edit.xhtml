@@ -1,0 +1,59 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"> 
+
+<ui:composition template="/WEB-INF/template.xhtml">
+	
+	<ui:define name="title">Registrations</ui:define>
+	
+	<ui:define name="header"><i class="fa fa-user-plus"></i> Registrations</ui:define>
+	
+	<ui:define name="content">
+	
+		<div class="row">
+			
+			<h:form styleClass="col-lg-6 col-md-8 col-sm-12">
+			
+				<div class="form-group">
+					<h:outputLabel value="Select Room" />
+					<h:selectOneMenu value="#{registrationEditBean.registration.room}" converter="#{roomConverter}" styleClass="dropdown form-control">
+						<f:selectItems value="#{rooms}" var="r" itemValue="#{r}" itemLabel="#{r.roomNumber}" />
+					</h:selectOneMenu>
+				</div>
+				
+				<div class="form-group">
+					<h:outputLabel value="Customer Name" />
+					<h:inputText value="#{registrationEditBean.registration.customer}" 
+						p:placeholder="Enter Customer Name" 
+						styleClass="form-control" />
+				</div>
+
+				<div class="form-group">
+					<h:outputLabel value="Check In Date" />
+					<h:inputText value="#{registrationEditBean.registration.checkIn}" 
+						p:placeholder="Enter Check In Date" p:type="date" 
+						styleClass="form-control" converter="LocalDateConverter" />
+				</div>
+
+				<div class="form-group">
+					<h:outputLabel value="Check Out Date" />
+					<h:inputText value="#{registrationEditBean.registration.checkOut}" 
+						p:placeholder="Enter Check In Date" p:type="date" 
+						styleClass="form-control" converter="LocalDateConverter" />
+				</div>
+				
+				<h:commandLink action="#{registrationEditBean.save()}" styleClass="btn btn-primary">
+					<i class="fa fa-save"></i> Save
+				</h:commandLink>
+			</h:form>
+		
+		</div>
+	
+	</ui:define>		
+
+</ui:composition>
+ 
+</html>
