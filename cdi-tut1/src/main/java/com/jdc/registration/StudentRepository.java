@@ -16,7 +16,7 @@ public class StudentRepository {
 	private List<Student> students;
 	
 	@Inject
-	@Generator("EE")
+	@Generator
 	private NumberGenerator gen;
 	
 	@PostConstruct

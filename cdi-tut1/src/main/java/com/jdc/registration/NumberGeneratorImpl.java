@@ -1,6 +1,6 @@
 package com.jdc.registration;
 
-@Generator("SE")
+@Generator
 public class NumberGeneratorImpl implements NumberGenerator{
 
 	private int id;

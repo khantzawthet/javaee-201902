@@ -1,6 +1,8 @@
 package com.jdc.test;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import org.junit.jupiter.api.AfterAll;
@@ -23,6 +25,25 @@ class ApplicationTest {
 	
 	@Test
 	void test() {
+		
+		EntityManager em  = emf.createEntityManager();
+		
+		EntityTransaction trans = em.getTransaction();
+		
+		try {
+			
+			trans.begin();
+			
+			// business logics
+			
+			trans.commit();
+			
+			
+		} catch (Exception e) {
+			trans.rollback();
+		}
+		
+		em.close();
 		
 	}
 

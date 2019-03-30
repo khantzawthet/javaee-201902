@@ -14,6 +14,6 @@ import javax.inject.Qualifier;
 @Target({ TYPE, FIELD })
 public @interface Generator {
 
-	String value();
+	String value() default "SE";
 	
 }
