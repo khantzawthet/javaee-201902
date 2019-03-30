@@ -1,0 +1,28 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>#{roomManageBean.title}</title>
+</h:head> 
+<body> 
+
+	<h1>#{roomManageBean.title}</h1>
+	
+	<h:form>
+		<h:panelGrid columns="2">
+			
+			<h:outputLabel value="Room Number" />
+			<h:inputText value="#{roomManageBean.room.roomNumber}" />
+			
+			<h:outputLabel value="Bed Count" />
+			<h:inputText value="#{roomManageBean.room.bed}" />
+			
+			<span></span>
+			<h:commandButton action="#{roomManageBean.save()}" value="Save" />
+		</h:panelGrid>
+	</h:form>
+</body> 
+</html>

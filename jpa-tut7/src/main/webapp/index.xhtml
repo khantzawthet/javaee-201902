@@ -1,0 +1,42 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Rooms</title>
+</h:head> 
+<body>
+
+	<h1>Rooms</h1>
+	
+	<h:link outcome="/room-edit" value="Add New"/>
+	
+	<h:dataTable value="#{rooms}" var="r">
+		
+		<h:column>
+			<f:facet name="header">ID</f:facet>
+			#{r.id}
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Room Number</f:facet>
+			#{r.roomNumber}
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Beds</f:facet>
+			#{r.bed}
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Edit</f:facet>
+			<h:link outcome="/room-edit" value="Edit">
+				<f:param name="id" value="#{r.id}"></f:param>
+			</h:link>
+		</h:column>
+	</h:dataTable>
+	
+</body> 
+</html>
