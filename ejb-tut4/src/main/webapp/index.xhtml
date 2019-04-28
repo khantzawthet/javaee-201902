@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Timer</title>
+</h:head> 
+<body> 
+
+	<h1>Timer</h1>
+	
+	<h:form enctype="multipart/form-data">
+		<h:inputFile value="#{uploadBean.part}" />
+		<h:commandButton action="#{uploadBean.upload()}" value="Upload" />
+	</h:form>
+	
+	<h3>Purchases</h3>
+	
+	<h:dataTable value="#{purchaseList}" var="p">
+		<h:column>
+			<f:facet name="header">
+				ID
+			</f:facet>
+			#{p.id}
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				Category
+			</f:facet>
+			#{p.category}
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				Item
+			</f:facet>
+			#{p.item}
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				Count
+			</f:facet>
+			#{p.quentity}
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				Total
+			</f:facet>
+			#{p.total}
+		</h:column>
+	</h:dataTable>
+
+	<h3>Summary</h3>
+	
+	<h:dataTable value="#{summaryList}" var="s">
+		<h:column>
+			<f:facet name="header">
+				Category
+			</f:facet>
+			#{s.category}
+		</h:column>
+	
+		<h:column>
+			<f:facet name="header">
+				Count
+			</f:facet>
+			#{s.quentity}
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">
+				Price
+			</f:facet>
+			#{s.total}
+		</h:column>
+	</h:dataTable>
+</body> 
+</html>

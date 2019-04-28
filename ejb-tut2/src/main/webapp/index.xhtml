@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Shout</title>
+</h:head> 
+<body> 
+	
+	<h1>Shout</h1>
+	
+	<h:form>
+		<h:inputText value="#{shoutBean.message}" />
+		<h:commandButton action="#{shoutBean.save()}" value="Shout" />
+	</h:form>
+	
+	<h:dataTable value="#{shoutBean.shouts}" var="s">
+	
+		<h:column>
+			<f:facet name="header">
+				Date
+			</f:facet>
+			#{s.id.shoutDate}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				Seq
+			</f:facet>
+			#{s.id.seqNumber}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				Message
+			</f:facet>
+			#{s.message}
+		</h:column>
+		
+	</h:dataTable>
+</body> 
+</html>
