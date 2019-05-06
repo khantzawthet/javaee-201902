@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Login</title>
+</h:head> 
+<body> 
+
+	<h1>Login</h1>
+	
+	<h:outputText value="#{not empty param.error ? 'Please check login id and password.' : ''}" />
+	
+	<h:form>
+		
+		<h:panelGrid columns="2">
+		
+			<h:outputLabel value="Login ID" />
+			<h:inputText value="#{securityBean.loginId}" />
+			
+			<h:outputLabel value="Password" />
+			<h:inputSecret value="#{securityBean.password}" />
+			
+			<h:panelGroup></h:panelGroup>
+			<h:commandButton action="#{securityBean.login()}" value="Login" />
+			
+		</h:panelGrid>
+		
+	</h:form>
+
+</body> 
+</html>
