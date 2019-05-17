@@ -1,0 +1,1 @@
+insert into Account (login, password, role) values ('admin', 'jGl25bVBBBW96Qi9Te4V37Fnqchz/Eu4qB9vKrRIqRg=', 'Admin');
