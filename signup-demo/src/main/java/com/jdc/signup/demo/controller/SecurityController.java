@@ -46,7 +46,6 @@ public class SecurityController {
 		try {
 			// create user
 			service.createUser(loginId, password);
-			
 			// internal login
 			internalLogin();
 		} catch (ServletException e) {
@@ -58,6 +57,7 @@ public class SecurityController {
 	
 	private void internalLogin() throws ServletException {
 		req.login(loginId, password);
+		System.out.println(req.isUserInRole("Admin"));
 	}
 
 	public String logout()  {

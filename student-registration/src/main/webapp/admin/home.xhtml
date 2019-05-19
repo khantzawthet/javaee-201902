@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+	
+		<ui:define name="title">Member</ui:define>
+		
+		<ui:define name="content">
+			
+			<h1>Member Home</h1>
+			
+			<h:panelGrid columns="2">
+				
+				<h:outputLabel value="Name" />
+				<h:outputText value="#{accountInfo.account.name}" />
+				
+				<h:outputLabel value="Roles" />
+				<ul>
+					<ui:repeat var="r" value="#{accountInfo.roles}">
+						<li>
+							<h:outputText value="#{r.role}" />
+						</li>
+					</ui:repeat>
+				</ul>
+			
+			</h:panelGrid>
+			
+			<h:form>
+				<h:commandLink action="#{securityController.logout()}" value="Logout" />
+			</h:form>
+		
+		</ui:define>
+	</ui:composition>
+</html>
