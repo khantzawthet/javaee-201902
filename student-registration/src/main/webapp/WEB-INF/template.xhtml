@@ -6,8 +6,46 @@
 
 <h:head>
 	<title>JDC | <ui:insert name="title">Default</ui:insert></title>
+	
+	<link href="../resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../resources/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="font-awesome.min.css"></h:outputStylesheet>
+	
+	<h:outputScript library="js" name="jquery.min.js"></h:outputScript>
+	<h:outputScript library="js" name="popper.min.js"></h:outputScript>
+	<h:outputScript library="js" name="bootstrap.min.js"></h:outputScript>
 </h:head> 
 <body> 
+
+	<div class="navbar navbar-expand navbar-dark justify-content-between bg-dark">
+		<div class="container">
+			<h:link styleClass="navbar-brand" outcome="/index">
+				<i class="fa fa-graduation-cap"></i> JDC Oneline
+			</h:link>
+			
+			<div class="navbar-nav">
+				<div class="nav-item dropdown">
+					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="menuDropdown">
+						<i class="fa fa-cog"></i>
+					</a>
+					
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="menuDropdown">
+						<h:link outcome="/login" styleClass="dropdown-item" rendered="#{empty request.remoteUser}">
+							<i class="fa fa-sign-in"></i> Sign In
+						</h:link>
+						
+						<h:form rendered="#{not empty request.remoteUser}">
+							<h:commandLink styleClass="dropdown-item" action="#{securityController.logout()}" >
+								<i class="fa fa-sign-out"></i> Sign Out
+							</h:commandLink>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<ui:insert name="content"></ui:insert>
 </body> 

@@ -29,7 +29,7 @@ public class AccountInfo implements Serializable {
 	private void init() {
 
 		String loginId = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
-
+		
 		account = service.findAccount(loginId);
 		roles = service.findRoles(loginId);
 	}

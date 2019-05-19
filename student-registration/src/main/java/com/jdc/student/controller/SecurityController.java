@@ -25,10 +25,6 @@ public class SecurityController {
 
 		try {
 			req.login(loginId, password);
-			
-			boolean result = req.isUserInRole("Admin");
-			System.out.println(result);
-			
 			return "/admin/home";
 		} catch (ServletException e) {
 			return "/login?error=1";
